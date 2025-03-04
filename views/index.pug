@@ -1,0 +1,14 @@
+extends layout
+
+block content
+   h1 Blog Posts
+   a(href="/create") Add New Post
+   each post in posts
+      div
+         h2= post.title
+         p= post.content
+         small= post.createdAt
+         a(href="/edit/" + post.id) Edit
+         form(action="/delete/" + post.id method="POST")
+            input(type="hidden" name="_method" value="DELETE")
+            button(type="submit") Delete
